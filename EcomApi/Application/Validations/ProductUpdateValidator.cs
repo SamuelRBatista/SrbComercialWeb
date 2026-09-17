@@ -28,8 +28,8 @@ public class ProductUpdateValidator : AbstractValidator<ProductUpdateRequest>
             .WithMessage("SKU é obrigatório.");
 
         RuleFor(x => x.BarCode)
-            .Length(13)
-            .WithMessage("Código de barras deve possuir 13 dígitos.");
+            .Must(barCode => string.IsNullOrWhiteSpace(barCode) || barCode.Length == 13)
+            .WithMessage("Código de barras deve possuir 13 dígitos quando informado.");
 
         RuleFor(x => x.CategoryId)
             .GreaterThan(0)
