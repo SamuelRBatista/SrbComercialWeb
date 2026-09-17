@@ -37,7 +37,7 @@ export default function ProductFormPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'price' ? parseFloat(value) : value,
+      [name]: name === 'price' && value !== '' ? parseFloat(value) : value,
     }));
   };
 
@@ -56,9 +56,15 @@ export default function ProductFormPage() {
       const form = new FormData();
       form.append('name', formData.name);
       form.append('description', formData.description);
+      if (!Number.isFinite(formData.price) || formData.price <= 0) {
+        throw new Error('Informe um preço maior que zero.');
+      }
+
       form.append('price', formData.price.toString());
       form.append('sku', formData.sku);
-      form.append('barCode', formData.barCode);
+      if (formData.barCode?.trim()) {
+        form.append('barCode', formData.barCode.trim());
+      }
       form.append('categoryId', formData.categoryId.toString());
 
       if (imageFile) {
