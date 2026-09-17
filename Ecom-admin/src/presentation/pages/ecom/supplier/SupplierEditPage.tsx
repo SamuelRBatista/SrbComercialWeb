@@ -56,7 +56,7 @@ export default function SupplierEditPage() {
     e.preventDefault();
     try {
       const newSupplier: Supplier = {
-            id: 0,
+        id: Number(id),
             ...formData,
        };
       await supplier.updateSupplier(newSupplier);
@@ -99,10 +99,10 @@ export default function SupplierEditPage() {
           <div style={styles.formRow}>
               <div style={styles.halfWidth}>                     
                 <TextField
-                    id="cpf"
-                    label="Cpf:"
+                    id="cnpj"
+                    label="CNPJ:"
                     type="text"
-                    name="cpf"
+                    name="cnpj"
                     value={formData.cnpj}
                     onChange={handleInputChange}
                     required 

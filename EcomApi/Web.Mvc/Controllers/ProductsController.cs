@@ -253,13 +253,15 @@ public class ProductsController : ControllerBase
                 });
             }
 
-            string imagePath = request.ExistingImageUrl ?? string.Empty;
+            string imagePath = string.IsNullOrWhiteSpace(request.ExistingImageUrl)
+                ? product.MainImageUrl
+                : request.ExistingImageUrl;
 
             if (request.Image != null && request.Image.Length > 0)
             {
-                if (!string.IsNullOrEmpty(request.ExistingImageUrl))
+                if (!string.IsNullOrEmpty(product.MainImageUrl))
                 {
-                    var trimmedPath = request.ExistingImageUrl
+                    var trimmedPath = product.MainImageUrl
                         .TrimStart('/')
                         .Replace('/', Path.DirectorySeparatorChar);
 
@@ -275,7 +277,7 @@ public class ProductsController : ControllerBase
                     }
                 }
 
-                var fileName = $"{Guid.NewGuid()}_{request.Image.FileName}";
+                var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(request.Image.FileName)}";
                 var uploadsFolder = Path.Combine(
                     Directory.GetCurrentDirectory(),
                     "wwwroot",

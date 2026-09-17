@@ -32,6 +32,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    volumes:
+      - api_uploads:/app/wwwroot/uploads
     ports:
       - "5124:8080"
 
@@ -59,3 +61,4 @@ services:
 
 volumes:
   postgres_data:
+  api_uploads:

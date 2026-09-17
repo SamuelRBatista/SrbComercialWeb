@@ -56,7 +56,7 @@ export default function ClientEditPage() {
     e.preventDefault();
     try {
       const newClient: Client = {
-            id: 0,
+        id: Number(id),
             ...formData,
        };
       await client.updateClient(newClient);
