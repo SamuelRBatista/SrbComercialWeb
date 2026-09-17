@@ -1,9 +1,10 @@
 import axios from 'axios';
 import type { Client } from '../../../../domain/entities/ecom/client/Client';
 import type { IClientRepository } from '../../../../domain/repositories/ecom/client/IClientRepository';
+import { API_BASE_URL } from '../../../../shared/config/api';
 
 export class ClientService implements IClientRepository {
-  private baseUrl = 'http://localhost:5124/api/Client';
+  private baseUrl = `${API_BASE_URL}/Client`;
 
   async getAll(): Promise<Client[]> {
     const response = await axios.get(this.baseUrl);

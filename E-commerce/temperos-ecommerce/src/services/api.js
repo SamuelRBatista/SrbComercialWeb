@@ -1,7 +1,7 @@
 // src/services/api.js
 
-const API_BASE_URL = 'http://localhost:5124/api';
-const API_BASE_URL_WITHOUT_API = 'http://localhost:5124'; // URL sem /api
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE_URL_WITHOUT_API = API_BASE_URL.replace(/\/api\/?$/, '');
 
 // Função para lidar com erros da API
 const handleResponse = async (response) => {

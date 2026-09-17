@@ -1,10 +1,11 @@
 import axios from "axios";
 import { ISupplierRepository } from "../../../../domain/repositories/ecom/supplier/ISupplierRepository";
 import { Supplier } from "../../../../domain/entities/ecom/supplier/Supplier";
+import { API_BASE_URL } from '../../../../shared/config/api';
 
 export class SupplierService  implements ISupplierRepository{
 
-    private baseUrl = 'http://localhost:5124/api/Supplier';
+    private baseUrl = `${API_BASE_URL}/Supplier`;
 
     async getAll(): Promise<Supplier[]> {
         const response = await axios.get(this.baseUrl);

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../shared/config/api';
 
-const baseUrl = 'http://localhost:5124/api/Products';
+const baseUrl = `${API_BASE_URL}/Products`;
 
 export async function sellProduct(productId: number, quantity: number, reason?: string, documentNumber?: string, userId?: number) {
   const payload = { quantity, reason, documentNumber, userId };

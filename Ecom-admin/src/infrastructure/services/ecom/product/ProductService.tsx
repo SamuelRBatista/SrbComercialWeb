@@ -1,10 +1,11 @@
 import axios from 'axios';
 import type { Product } from '../../../../domain/entities/ecom/product/Product';
 import type { IProductRepository } from '../../../../domain/repositories/ecom/product/IProductRepository';
+import { API_BASE_URL } from '../../../../shared/config/api';
 
 export class ProductService implements IProductRepository {
  
-  private baseUrl = 'http://localhost:5124/api/Products'; // ajuste conforme necessário
+  private baseUrl = `${API_BASE_URL}/Products`;
 
   async getAll(): Promise<Product[]> {
     const res = await axios.get(this.baseUrl);
