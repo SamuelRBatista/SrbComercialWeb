@@ -17,7 +17,8 @@ public class ClientUpdateValidator
 
         RuleFor(x => x.Cpf)
             .NotEmpty()
-            .Length(11);
+            .Matches(@"^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$")
+            .WithMessage("CPF deve conter 11 dígitos, com ou sem máscara.");
 
         RuleFor(x => x.Email)
             .NotEmpty()
