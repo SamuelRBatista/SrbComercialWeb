@@ -18,11 +18,7 @@ export class ProductService implements IProductRepository {
   }
 
    async create(formData: FormData): Promise<Product> { 
-    const response = await axios.post<Product>(this.baseUrl, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });      
+    const response = await axios.post<Product>(this.baseUrl, formData);
     return response.data;
   }
 
@@ -30,9 +26,7 @@ export class ProductService implements IProductRepository {
     const id = formData.get('id');
     if (!id) throw new Error('Id do produto não fornecido no FormData');
 
-    await axios.put(`${this.baseUrl}/${id}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    await axios.put(`${this.baseUrl}/${id}`, formData);
   }
 
   async delete(id: number): Promise<void> {
