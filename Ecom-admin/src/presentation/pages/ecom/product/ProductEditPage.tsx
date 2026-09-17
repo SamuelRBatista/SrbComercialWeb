@@ -69,7 +69,9 @@ export default function ProductEditPage() {
       form.append('description', formData.description);
       form.append('price', formData.price.toString());
       form.append('sku', formData.sku);
-      form.append('barCode', formData.barCode);
+      if (formData.barCode?.trim()) {
+        form.append('barCode', formData.barCode.trim());
+      }
       form.append('categoryId', formData.categoryId.toString());
 
       if (imageFile) {
