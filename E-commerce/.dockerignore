@@ -1,0 +1,4 @@
+temperos-ecommerce/node_modules/
+temperos-ecommerce/dist/
+.git/
+*.log

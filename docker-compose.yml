@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: srb-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Copy .env.example to .env and set POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./EcomApi/Database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./EcomApi
+      dockerfile: Dockerfile
+    container_name: srb-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: Server=postgres;Port=5432;Database=postgres;User Id=postgres;Password=${POSTGRES_PASSWORD};
+      Jwt__SecretKey: ${JWT_SECRET_KEY:?Copy .env.example to .env and set JWT_SECRET_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "5124:8080"
+
+  admin:
+    build:
+      context: ./Ecom-admin
+      dockerfile: Dockerfile
+    container_name: srb-admin
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "5173:80"
+
+  ecommerce:
+    build:
+      context: ./E-commerce
+      dockerfile: Dockerfile
+    container_name: srb-ecommerce
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "5174:80"
+
+volumes:
+  postgres_data:

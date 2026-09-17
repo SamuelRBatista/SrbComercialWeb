@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+  <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\uploads\products\03c47d75-5b8e-46dd-969a-ae0ed582b7af_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\04847da5-165a-44e8-b1c9-ee72be9d5aba_Captura de tela de 2026-05-14 15-16-41.png" />
+    <Content Remove="wwwroot\uploads\products\08b7ad7f-9656-46da-8fbc-a8420c55a86a_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\091e8a37-e97f-4fd5-bd38-00bc975a8b54_ChatGPT Image 20 de mai. de 2026, 17_40_48.png" />
+    <Content Remove="wwwroot\uploads\products\09325251-c878-4d42-97b6-bb91250cc197_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\1398ee35-d85e-44f7-a6b9-e97bd10ed76f_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\179e2bd3-f5bf-4426-bf73-c97875a63a44_9meses.png" />
+    <Content Remove="wwwroot\uploads\products\1bd9be00-3bf6-45f1-bc95-f8bb83d7ab35_9meses.png" />
+    <Content Remove="wwwroot\uploads\products\1f95f19f-4587-4f61-9a18-703062bfed62_Captura de tela de 2026-05-07 20-13-49.png" />
+    <Content Remove="wwwroot\uploads\products\241056a4-7a3f-4c02-970e-a871a1d7738f_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\27714eb0-5539-4a7d-915a-392a72f0e664_EDIT_IMG-20250510-WA0015.jpg" />
+    <Content Remove="wwwroot\uploads\products\2fa0e965-a784-4465-9cc9-3c96e37a6768_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\312dda93-9561-4a5b-9757-3cdfdd45ded0_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\35d0b44b-cb20-4d9f-82da-3f7aec7a128c_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\35dfd4de-5efc-4865-95c9-793a28a3a30c_Screenshot_5.png" />
+    <Content Remove="wwwroot\uploads\products\360d8064-75b0-4192-a190-24c2272e97ed_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\3d20a19f-3d92-4334-8958-8e04555a2d99_bannerlinkedin.png" />
+    <Content Remove="wwwroot\uploads\products\48d0477b-98a1-4f28-8be0-b6d6cbeb48eb_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\4a34b0ac-f5c1-44ed-8d7e-1780ed16097d_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\4c663354-5fc4-4291-b4d7-78a9dcf00aca_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\54504927-d181-410f-9e74-2b830410ee9b_Captura de tela de 2026-05-20 18-08-44.png" />
+    <Content Remove="wwwroot\uploads\products\565ae026-c38a-4bfb-89df-0a6615a04ad0_Captura de tela de 2026-04-21 10-37-38.png" />
+    <Content Remove="wwwroot\uploads\products\60274bc7-59ca-451f-963a-d71aafc9b031_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\63d361dc-2aba-4313-993d-58309ed3ce1d_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\65ae219f-b291-41fb-86a6-904362a8cdae_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\66d0ec85-776d-4bd3-b07f-ce15fdf2c1e5_Captura de tela de 2026-05-14 15-16-41.png" />
+    <Content Remove="wwwroot\uploads\products\672fc0b7-a436-44dd-acdf-8f1ff67cac02_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\6738d24d-64ef-47b2-9f4f-ad4af3f29a56_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\6e945ad1-0f34-46ba-ab46-3142d68dee03_Captura de tela de 2026-05-07 20-13-49.png" />
+    <Content Remove="wwwroot\uploads\products\6f056603-e492-462b-aa7e-807cb0ff4bc7_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\70add5b1-1d48-43a2-bd6b-4420c7e0d660_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\724cb4d2-8349-4c3b-98a8-b101888d6a59_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\728e1b24-e237-44ba-98cc-d9c0efca4b32_ChatGPT Image 20 de mai. de 2026, 17_40_48.png" />
+    <Content Remove="wwwroot\uploads\products\7df76be0-e331-452b-abc7-0d03239e6653_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\7ea99be3-274d-4c04-965e-74cf55abafe8_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\7eddf7ad-451f-477a-a434-5f1f1fd1e9cf_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\8121611a-5e59-42ac-b8d8-79effd5c3882_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\83ebc788-8258-45c7-9f76-0997f05c94f4_bannerlinkedin.png" />
+    <Content Remove="wwwroot\uploads\products\83efbd93-928e-4394-8793-4bba4f8600e4_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\8a1500e0-c250-4ec9-801a-8d3ae094f90a_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\8d677d67-9410-4058-a53e-3f740b603392_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\8d76a656-9056-4008-8914-cc20cbbbeda7_IMG-20260419-WA0013.jpg" />
+    <Content Remove="wwwroot\uploads\products\95817b17-7ca0-431d-ba0e-afaa0487a945_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\98617579-295f-44ca-bdb8-8f73144c7cc5_bannerlinkedin.png" />
+    <Content Remove="wwwroot\uploads\products\9a51c6c9-6562-4cac-ab52-b325aa2478ba_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\9bba9db6-4774-4c83-bcf5-9cc55085b176_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\9bcee5da-972a-4118-8a01-69c8e6559ef6_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\9edc9b5d-1c81-4c6b-9349-d47e42a67376_Captura de tela de 2026-05-07 20-13-49.png" />
+    <Content Remove="wwwroot\uploads\products\a0757a2f-2d2c-42f7-b951-a0f2edca2abe_EDIT_IMG-20250510-WA0015.jpg" />
+    <Content Remove="wwwroot\uploads\products\a33f0cee-fe50-4c3d-a671-1beacb60a6bb_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\a39d21a7-980f-474e-b15e-43a2b118dd25_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\a82ed500-cca7-44a7-87b6-9d3a1e992c2d_bannerlinkedin.png" />
+    <Content Remove="wwwroot\uploads\products\a8fe2989-cc39-4f9e-be8c-bf0c15bf7ccd_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\aae09be9-b94e-4cb4-bee7-adc1badeba77_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\adc8d96e-d5b2-4a82-bbbf-abcc18c252d5_9meses.png" />
+    <Content Remove="wwwroot\uploads\products\af6559e6-0b60-45a9-9479-20de24dfea0f_277545563_674847357174343_8757134195130722263_n.jpg" />
+    <Content Remove="wwwroot\uploads\products\b009fe95-cb6d-4575-9a0b-7cd91536768f_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\b073bdf6-2507-4842-993f-3d824526e5f9_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\b2dce200-57c8-4580-ae55-29acfd763713_EDIT_IMG-20250510-WA0015.jpg" />
+    <Content Remove="wwwroot\uploads\products\b9a493d5-3190-4c7c-aeca-6ec65758b9c6_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\c478ee95-fa5e-4c66-bdf3-ce658cc52e62_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\c92b7498-158b-4a9b-a431-6a93b3966c11_9meses.png" />
+    <Content Remove="wwwroot\uploads\products\cd610524-5e33-4db9-9ecc-142e8e73ad6c_Screenshot_5.png" />
+    <Content Remove="wwwroot\uploads\products\cf018b8c-9584-4467-b94a-bb58711d5f62_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\d29b8da8-a30a-4c71-9b91-f3f4bf019565_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\d996dcf8-d45d-4e6b-b96a-a2ad96710253_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\dd6dc478-df9c-4aa8-b041-873c0a7748f1_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\df1574cc-6142-442b-88ec-0e7a8e4b4b48_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\e13ccb24-4285-4b94-bb32-ab0ae31f1409_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\e1d5b1ce-eb01-49f6-866f-2cfc0ff7c2bb_ChatGPT Image 20 de mai. de 2026, 17_40_48.png" />
+    <Content Remove="wwwroot\uploads\products\e4aea0be-e744-4527-96f2-58d9368f7fdf_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\e8130bd6-65a6-4a88-9650-fd2b95fb3b27_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\ec54b148-b4f5-4393-83a9-965c48e836ca_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\ec587546-0041-4104-afa3-86bb3dbdf8aa_Screenshot_5.png" />
+    <Content Remove="wwwroot\uploads\products\eccbbefa-7fcf-4eab-919f-abefcde0140e_UnipCertificado.png" />
+    <Content Remove="wwwroot\uploads\products\edd845ee-0eab-4d48-85b0-0950a8abb0d4_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\f416d497-07ec-444c-b4a4-a25c56cf8d68_sand-sandal-sea-1282605-wallhere.com.jpg" />
+    <Content Remove="wwwroot\uploads\products\fb2b1af3-87c7-45ce-a6fc-c7cd6e6eb599_Captura de tela de 2026-05-20 18-09-22.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.72" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.6.0" />
+    <PackageReference Include="Npgsql" Version="10.0.3" />
+   <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.1" />
+   <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+   <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure.IoC\Infrastructure.IoC.csproj" />
+    <ProjectReference Include="..\InfraData\InfraData.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\products\" />
+  </ItemGroup>
+
+</Project>
