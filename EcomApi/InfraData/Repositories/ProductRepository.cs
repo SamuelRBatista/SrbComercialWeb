@@ -315,6 +315,12 @@ public class ProductRepository : IProductRepository
         if (row.stock_quantity != null)
             product.SetStockQuantity((int)row.stock_quantity);
 
+        if (row.maximum_stock != null)
+            product.StockInfo.SetMaximumStock((int)row.maximum_stock);
+
+        if (row.minimum_stock != null)
+            product.StockInfo.SetMinimumStock((int)row.minimum_stock);
+
         if (row.status != null)
         {
             var status = (ProductStatus)row.status;
@@ -1014,7 +1020,7 @@ public class ProductRepository : IProductRepository
         parameters.Add("PromotionId", product.PriceInfo?.PromotionId);
         
         parameters.Add("StockQuantity", product.StockInfo?.Quantity ?? 0);
-        parameters.Add("MinimumStock", product.StockInfo?.MinimumStock);
+        parameters.Add("MinimumStock", product.StockInfo?.MinimumStock ?? 0);
         parameters.Add("MaximumStock", product.StockInfo?.MaximumStock);
         parameters.Add("UnitOfMeasure", product.StockInfo?.UnitOfMeasure ?? "UN");
         parameters.Add("IsTrackInventory", product.StockInfo?.IsTrackInventory ?? true);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { TextField, MenuItem, Select, InputLabel } from '@mui/material';
+import { Alert, TextField, MenuItem, Select, InputLabel } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 
 import type { Product } from '../../../../domain/entities/ecom/product/Product';
@@ -17,12 +17,15 @@ export default function ProductEditPage() {
   const { categories } = useCategory();
   const { product } = useAppContext(); // <-- usando contexto
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const [formData, setFormData] = useState<Product>({
     id: 0,
     name: '',
     description: '',
     price: 0,
+    stockQuantity: 0,
     sku: '',
     barCode: '',
     imageUrl: '',
@@ -48,7 +51,9 @@ export default function ProductEditPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'price' ? parseFloat(value) : value,
+      [name]: name === 'price' || name === 'stockQuantity'
+        ? (value === '' ? 0 : Number(value))
+        : value,
     }));
   };
 
@@ -62,15 +67,24 @@ export default function ProductEditPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    const barCode = formData.barCode?.trim() ?? '';
+    if (barCode && barCode.length !== 13) {
+      setErrorMessage('Código de barras deve possuir 13 dígitos quando informado.');
+      return;
+    }
+
     try {
       const form = new FormData();
       form.append('id', formData.id.toString());
       form.append('name', formData.name);
       form.append('description', formData.description);
       form.append('price', formData.price.toString());
+      form.append('stockQuantity', String(formData.stockQuantity ?? 0));
       form.append('sku', formData.sku);
-      if (formData.barCode?.trim()) {
-        form.append('barCode', formData.barCode.trim());
+      if (barCode) {
+        form.append('barCode', barCode);
       }
       form.append('categoryId', formData.categoryId.toString());
 
@@ -85,8 +99,11 @@ export default function ProductEditPage() {
       // Atualiza via contexto
       await product.updateProduct(form);
 
-      navigate('/panel/product');
+      setSuccessMessage('Cadastro alterado com sucesso.');
+      setTimeout(() => navigate('/panel/product'), 1200);
     } catch (err) {
+      const message = err instanceof Error ? err.message : 'Não foi possível atualizar o produto.';
+      setErrorMessage(message);
       console.error('Erro ao atualizar produto', err);
     }
   };
@@ -95,6 +112,12 @@ export default function ProductEditPage() {
     <SidebarLayout isCollapsed={false}>
       <div style={styles.cadastroFormContainer}>
         <h2 style={styles.title}>Editar Produto</h2>
+        {errorMessage && (
+          <p role="alert" style={{ color: '#b42318', marginBottom: 16 }}>
+            {errorMessage}
+          </p>
+        )}
+        {successMessage && <Alert severity="success" sx={{ mb: 2 }}>{successMessage}</Alert>}
         <form onSubmit={handleSubmit} style={styles.cadastroForm}>
           <div style={styles.formGroup}>
             <TextField
@@ -134,6 +157,20 @@ export default function ProductEditPage() {
                 required
                 placeholder="R$0,00"
                 label="Preço:"
+                style={styles.formControl}
+              />
+            </div>
+
+            <div style={styles.halfWidth}>
+              <TextField
+                id="stockQuantity"
+                type="number"
+                name="stockQuantity"
+                label="Quantidade:"
+                value={formData.stockQuantity ?? 0}
+                onChange={handleInputChange}
+                inputProps={{ min: 0, step: 1 }}
+                required
                 style={styles.formControl}
               />
             </div>

@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   description: string;
   price: number;
+  stockQuantity?: number;
   sku: string;
   barCode: string;
   imageUrl: string;

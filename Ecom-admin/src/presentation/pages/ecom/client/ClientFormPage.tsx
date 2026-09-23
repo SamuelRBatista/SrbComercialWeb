@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {TextField, MenuItem, Select, InputLabel } from '@mui/material';
+import { Alert, TextField, MenuItem, Select, InputLabel } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 
 import type { Client } from '../../../../domain/entities/ecom/client/Client';
@@ -24,6 +24,7 @@ export default function ClientFormPage() {
   name:'', cpf:'', email:'', phoneNumber:'', address:'',
   neighborhood:'', zipCode:'', stateId:0, cityId:0,
 });
+  const [successMessage, setSuccessMessage] = useState('');
   const { cities } = useCities(formData.stateId);
 
 
@@ -53,7 +54,8 @@ export default function ClientFormPage() {
     try {
       const newClient: Client = { id: 0, ...formData };
       await client.createClient(newClient); // envia objeto Client diretamente
-      navigate('/panel/client');
+      setSuccessMessage('Cadastro realizado com sucesso.');
+      setTimeout(() => navigate('/panel/client'), 1200);
     } catch (err) {
       console.error('Erro ao salvar client', err);
     }
@@ -63,6 +65,7 @@ export default function ClientFormPage() {
     <SidebarLayout isCollapsed={false}>
      <div style={styles.cadastroFormContainer}>
             <h2 style={styles.title}>Cliente</h2>
+           {successMessage && <Alert severity="success" sx={{ mb: 2 }}>{successMessage}</Alert>}
             <form onSubmit={handleSubmit} style={styles.cadastroForm}>
                 <div style={styles.formGroup}>                 
                     <TextField

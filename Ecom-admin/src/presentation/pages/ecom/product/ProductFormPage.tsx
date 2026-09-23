@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {TextField, MenuItem, Select, InputLabel } from '@mui/material';
+import { Alert, TextField, MenuItem, Select, InputLabel } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 
 import type { Product } from '../../../../domain/entities/ecom/product/Product';
@@ -20,11 +20,13 @@ export default function ProductFormPage() {
   const { categories } = useCategory();
   const { product } = useAppContext();
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
     description: '',
     price: 0,
+    stockQuantity: 0,
     sku: '',
     barCode: '',
     imageUrl: '',
@@ -37,7 +39,9 @@ export default function ProductFormPage() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'price' && value !== '' ? parseFloat(value) : value,
+      [name]: name === 'price' || name === 'stockQuantity'
+        ? (value === '' ? 0 : Number(value))
+        : value,
     }));
   };
 
@@ -61,6 +65,7 @@ export default function ProductFormPage() {
       }
 
       form.append('price', formData.price.toString());
+      form.append('stockQuantity', String(formData.stockQuantity ?? 0));
       form.append('sku', formData.sku);
       if (formData.barCode?.trim()) {
         form.append('barCode', formData.barCode.trim());
@@ -72,7 +77,8 @@ export default function ProductFormPage() {
       }
 
       await product.createProduct(form);
-      navigate('/panel/product');
+      setSuccessMessage('Cadastro realizado com sucesso.');
+      setTimeout(() => navigate('/panel/product'), 1200);
     } catch (err) {
       console.error('Erro ao salvar produto', err);
     }
@@ -83,6 +89,7 @@ export default function ProductFormPage() {
     <SidebarLayout isCollapsed={false}>
      <div style={styles.cadastroFormContainer}>
             <h2 style={styles.title}>Produto</h2>
+           {successMessage && <Alert severity="success" sx={{ mb: 2 }}>{successMessage}</Alert>}
             <form onSubmit={handleSubmit} style={styles.cadastroForm}>
                 <div style={styles.formGroup}>                 
                     <TextField
@@ -125,6 +132,20 @@ export default function ProductFormPage() {
                             style={styles.formControl}
                         />
                     </div>
+
+                        <div style={styles.halfWidth}>
+                          <TextField
+                            id="stockQuantity"
+                            type="number"
+                            name="stockQuantity"
+                            label="Quantidade:"
+                            value={formData.stockQuantity ?? 0}
+                            onChange={handleInputChange}
+                            inputProps={{ min: 0, step: 1 }}
+                            required
+                            style={styles.formControl}
+                          />
+                        </div>
 
                     <div style={styles.halfWidth}>                      
                         <TextField

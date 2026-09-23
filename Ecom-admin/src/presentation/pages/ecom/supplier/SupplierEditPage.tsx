@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import {TextField, MenuItem, Select, InputLabel } from '@mui/material';
+import { Alert, TextField, MenuItem, Select, InputLabel } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 
 import type { Supplier } from '../../../../domain/entities/ecom/supplier/Supplier';
@@ -25,6 +25,7 @@ export default function SupplierEditPage() {
 });
  const { cities } = useCities(formData.stateId);
  const { supplier } = useAppContext();
+ const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     console.log('ID dentro do useEffect:', id);
@@ -60,7 +61,8 @@ export default function SupplierEditPage() {
             ...formData,
        };
       await supplier.updateSupplier(newSupplier);
-      navigate('/panel/supplier');
+      setSuccessMessage('Cadastro alterado com sucesso.');
+      setTimeout(() => navigate('/panel/supplier'), 1200);
     } catch (err) {
       console.error('Erro ao atualizar o fornecedor', err);
     }
@@ -82,6 +84,7 @@ export default function SupplierEditPage() {
     <SidebarLayout isCollapsed={false}>
       <div style={styles.cadastroFormContainer}>
         <h2 style={styles.title}>Editar Fornecedor</h2>
+        {successMessage && <Alert severity="success" sx={{ mb: 2 }}>{successMessage}</Alert>}
         <form onSubmit={handleSubmit} style={styles.cadastroForm}>
           <div style={styles.formGroup}>                 
             <TextField

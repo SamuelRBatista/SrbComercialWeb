@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {TextField, MenuItem, Select, InputLabel } from '@mui/material';
+import { Alert, TextField, MenuItem, Select, InputLabel } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material/Select';
 
 import type { Supplier } from '../../../../domain/entities/ecom/supplier/Supplier';
@@ -24,6 +24,7 @@ export default function SupplierFormPage() {
   name:'', cnpj:'', email:'', phoneNumber:'', address:'',
   neighborhood:'', zipCode:'', stateId:0, cityId:0,
 });
+  const [successMessage, setSuccessMessage] = useState('');
   const { cities } = useCities(formData.stateId);
 
 
@@ -53,7 +54,8 @@ export default function SupplierFormPage() {
     try {
       const newSupplier: Supplier = { id: 0, ...formData };
       await supplier.createSupplier(newSupplier); // envia objeto Client diretamente
-      navigate('/panel/supplier');
+      setSuccessMessage('Cadastro realizado com sucesso.');
+      setTimeout(() => navigate('/panel/supplier'), 1200);
     } catch (err) {
       console.error('Erro ao salvar o fornecedor', err);
     }
@@ -63,6 +65,7 @@ export default function SupplierFormPage() {
     <SidebarLayout isCollapsed={false}>
      <div style={styles.cadastroFormContainer}>
             <h2 style={styles.title}>Fornecedor</h2>
+           {successMessage && <Alert severity="success" sx={{ mb: 2 }}>{successMessage}</Alert>}
             <form onSubmit={handleSubmit} style={styles.cadastroForm}>
                 <div style={styles.formGroup}>                 
                     <TextField
