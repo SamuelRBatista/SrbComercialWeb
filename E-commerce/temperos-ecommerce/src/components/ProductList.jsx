@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
-import { useProducts } from '../hooks/useProducts';
+import { useCategories, useProducts } from '../hooks/useProducts';
 
 const ProductList = () => {
   const { products, loading, error } = useProducts();
+  const { categories, loading: categoriesLoading } = useCategories();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
-  // Extrair categorias únicas dos produtos (adaptado da API)
-  const categories = [...new Set(products.map(p => p.category).filter(Boolean))];
+  const productsWithCategories = products.map((product) => {
+    const category = categories.find((item) => item.id === product.categoryId);
+
+    return {
+      ...product,
+      category: category?.name || product.category || 'Sem Categoria',
+    };
+  });
+
+  const categoryNames = [...new Set(productsWithCategories.map((product) => product.category))];
 
   // Filtrar produtos
-  const filteredProducts = products.filter(product => {
+  const filteredProducts = productsWithCategories.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
@@ -19,7 +28,7 @@ const ProductList = () => {
   });
 
   // Estado de carregamento
-  if (loading) {
+  if (loading || categoriesLoading) {
     return (
       <div className="loading-container">
         <div className="loading-spinner"></div>
@@ -56,7 +65,7 @@ const ProductList = () => {
           className="category-filter"
         >
           <option value="">Todas as categorias</option>
-          {categories.map(category => (
+          {categoryNames.map(category => (
             <option key={category} value={category}>{category}</option>
           ))}
         </select>

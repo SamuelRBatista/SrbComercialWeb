@@ -21,9 +21,9 @@ const ProductCard = ({ product }) => {
         <p className="product-description">{product.description}</p>
         <div className="product-details">
           <span className="product-weight">📦 {product.weight}</span>
-          <span className="product-stock">
+          {/* <span className="product-stock">
             {product.inStock ? '✅ Em estoque' : '❌ Indisponível'}
-          </span>
+          </span> */}
         </div>
         <div className="product-footer">
           <span className="product-price">R$ {product.price.toFixed(2)}</span>

@@ -64,6 +64,7 @@ export const adaptProductToFrontend = (apiProduct) => {
     description: apiProduct.description || apiProduct.shortDescription || 'Sem descrição disponível',
     price: apiProduct.price,
     image: imageUrl,
+    categoryId: apiProduct.categoryId,
     category: categoryName,
     weight: apiProduct.weight ? `${apiProduct.weight}g` : 'Peso não informado',
     inStock: inStock,
@@ -157,7 +158,7 @@ export const api = {
   // Buscar categorias
   getCategories: async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/Categories`, {
+      const response = await fetch(`${API_BASE_URL}/Category`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
